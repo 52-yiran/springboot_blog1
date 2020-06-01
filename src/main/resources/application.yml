@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+
+#数据库源配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vueblog?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+#shiro-redis:
+#  enabled: true
+#  redis-manager:
+#    host: 127.0.0.1:6379
+#Mybatis配置
+mybatis:
+  type-aliases-package: com.blog.pojo
+  mapper-locations: classpath:mapper/*.xml
+  #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+markerhub:
+  jwt:
+    # 加密秘钥
+    secret: f4e2e52034348f86b67cde581c0f9eb5
+    # token有效时长，7天，单位秒
+    expire: 604800
+    header: Authorization
+
+
+# x显示sql 语句
+logging:
+  level:
+    com:
+      blog:
+        mapper: debug
+
+
+
